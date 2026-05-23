@@ -1,7 +1,16 @@
 import { StatusBar, StyleSheet, useColorScheme, View } from "react-native";
+import {
+  BannerAd,
+  BannerAdSize,
+  TestIds,
+} from "react-native-google-mobile-ads";
 import { WebView } from "react-native-webview";
 
 const APP_URL = "https://time-converter-woad-iota.vercel.app/";
+
+const adUnitId = __DEV__
+  ? TestIds.ADAPTIVE_BANNER
+  : "ca-app-pub-3012411444875177/8300847790";
 
 function App() {
   const isDarkMode = useColorScheme() === "dark";
@@ -13,6 +22,14 @@ function App() {
         backgroundColor={"white"}
       />
       <WebView source={{ uri: APP_URL }} style={styles.webview} />
+      <View>
+        <BannerAd
+          unitId={adUnitId}
+          size={BannerAdSize.FULL_BANNER}
+          onAdLoaded={() => console.log("Ad loaded")}
+          onAdFailedToLoad={(error) => console.error("Ad failed:", error)}
+        />
+      </View>
     </View>
   );
 }
