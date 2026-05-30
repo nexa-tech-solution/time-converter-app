@@ -25,7 +25,7 @@ function App() {
       <View>
         <BannerAd
           unitId={adUnitId}
-          size={BannerAdSize.FULL_BANNER}
+          size={BannerAdSize.LARGE_ANCHORED_ADAPTIVE_BANNER}
           onAdLoaded={() => console.log("Ad loaded")}
           onAdFailedToLoad={(error) => console.error("Ad failed:", error)}
         />
