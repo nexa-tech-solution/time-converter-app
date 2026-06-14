@@ -71,31 +71,19 @@ function App() {
             onError={() => setIsLoading(false)}
           />
           {isLoading ? (
-            <>
-              <View style={styles.loadingOverlay}>
-                <View style={styles.progressTrack}>
-                  <Animated.View
-                    style={[
-                      styles.progressBar,
-                      { transform: [{ translateX: progressTranslateX }] },
-                    ]}
-                  />
-                </View>
-              </View>
-              <View>
-                <BannerAd
-                  unitId={adUnitId}
-                  size={bannerSize}
-                  onAdLoaded={() => console.log("Ad loaded")}
-                  onAdFailedToLoad={(error) =>
-                    console.error("Ad failed:", error)
-                  }
+            <View style={styles.loadingOverlay}>
+              <View style={styles.progressTrack}>
+                <Animated.View
+                  style={[
+                    styles.progressBar,
+                    { transform: [{ translateX: progressTranslateX }] },
+                  ]}
                 />
               </View>
-            </>
+            </View>
           ) : null}
         </View>
-        <View>
+        <View style={styles.adContainer}>
           <BannerAd
             unitId={adUnitId}
             size={bannerSize}
@@ -138,6 +126,10 @@ const styles = StyleSheet.create({
     height: "100%",
     borderRadius: 999,
     backgroundColor: "#2b9eb3",
+  },
+  adContainer: {
+    minHeight: 60,
+    justifyContent: "center",
   },
 });
 
