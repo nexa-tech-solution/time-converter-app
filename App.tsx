@@ -1,6 +1,7 @@
 import {
   Animated,
   Easing,
+  Platform,
   StatusBar,
   StyleSheet,
   useColorScheme,
@@ -19,7 +20,9 @@ const APP_URL = "https://time-converter-woad-iota.vercel.app/";
 
 const adUnitId = __DEV__
   ? TestIds.ADAPTIVE_BANNER
-  : "ca-app-pub-3012411444875177/8300847790";
+  : Platform.OS === "android"
+  ? "ca-app-pub-3012411444875177/8300847790"
+  : "ca-app-pub-3012411444875177/4083959080";
 
 const bannerSize = BannerAdSize.ANCHORED_ADAPTIVE_BANNER;
 
